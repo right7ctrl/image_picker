@@ -548,6 +548,10 @@ public class ImagePickerDelegate
 
   private void handleImageResult(String path, boolean shouldDeleteOriginalIfScaled) {
     if (methodCall != null) {
+      if (path.toLowerCase().endsWith(".gif")) {
+        finishWithSuccess(path);
+        return;
+      }
       Double maxWidth = methodCall.argument("maxWidth");
       Double maxHeight = methodCall.argument("maxHeight");
       Integer imageQuality = methodCall.argument("imageQuality");
